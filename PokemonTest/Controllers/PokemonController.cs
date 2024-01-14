@@ -1,6 +1,4 @@
-﻿
-
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using PokemonTest.Dto;
@@ -43,7 +41,7 @@ namespace PokemonTest.Controllers
             if (!_pokemonRepository.PokemonExists(id))
                 return NotFound();
 
-            var pokemon = _mapper.Map<Pokemon>(_pokemonRepository.GetPokemon(id));
+            var pokemon = _mapper.Map<PokemonDto>(_pokemonRepository.GetPokemon(id));
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
