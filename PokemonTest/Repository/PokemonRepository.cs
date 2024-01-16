@@ -1,4 +1,5 @@
 ﻿using PokemonTest.Data;
+using PokemonTest.Dto;
 using PokemonTest.Interfaces;
 using PokemonTest.Models;
 
@@ -66,6 +67,11 @@ namespace PokemonTest.Repository
             }
             return ((decimal)review.Rating);
          
+        }
+
+        public Pokemon GetPokemonTrimToUpper(PokemonDto pokemonCreate)
+        {
+           return GetAllPokemons().Where(p => p.Name.Trim().ToUpper() == pokemonCreate.Name.Trim().ToUpper()).FirstOrDefault();
         }
 
         public bool PokemonExists(int id)

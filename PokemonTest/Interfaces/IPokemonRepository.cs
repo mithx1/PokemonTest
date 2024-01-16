@@ -1,4 +1,5 @@
-﻿using PokemonTest.Models;
+﻿using PokemonTest.Dto;
+using PokemonTest.Models;
 
 namespace PokemonTest.Interfaces
 {
@@ -11,5 +12,7 @@ namespace PokemonTest.Interfaces
         bool PokemonExists(int id);
         bool CreatePokemon(int ownerId, int categoryId, Pokemon pokemon);
         bool Save();
+
+        Pokemon GetPokemonTrimToUpper(PokemonDto pokemonCreate);
     }
 }
