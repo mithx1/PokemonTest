@@ -12,6 +12,35 @@ namespace PokemonTest.Repository
         {
             _context = context;
         }
+
+        public bool CreatePokemon(int ownerId, int categoryId, Pokemon pokemon)
+        {
+            var pokemonOwnerEntity = _context.Owners.SingleOrDefault(a => a.Id == ownerId);
+            var pokemonCategoryEntity = _context.Categories.SingleOrDefault(a => a.Id == categoryId);
+
+            if (pokemonOwnerEntity == null || pokemonCategoryEntity == null)
+            {
+                return false;
+            }
+
+            var pokemonOwner = new PokemonOwner
+            {
+                Owner = pokemonOwnerEntity,
+                Pokemon = pokemon
+            };
+
+            var pokemonCategory = new PokemonCategory
+            {
+                Category = pokemonCategoryEntity,
+                Pokemon = pokemon
+            };
+
+            _context.AddRange(new object[] { pokemonOwner, pokemonCategory, pokemon });
+
+            return Save();
+        }
+
+
         public ICollection<Pokemon> GetAllPokemons()
         {
             return _context.Pokemons.OrderBy(p => p.Id).ToList();
@@ -42,6 +71,12 @@ namespace PokemonTest.Repository
         public bool PokemonExists(int id)
         {
             return _context.Pokemons.Any(p => p.Id == id);
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved >= 0 ? true : false;
         }
     }
 }
