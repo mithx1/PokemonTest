@@ -7,6 +7,8 @@ using PokemonTest.Repository;
 
 namespace PokemonTest.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CategoryController : Controller
     {
         private ICategoryRepository _categoryRepository;

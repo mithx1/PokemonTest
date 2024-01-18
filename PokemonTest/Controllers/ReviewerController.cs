@@ -6,6 +6,8 @@ using PokemonTest.Models;
 
 namespace PokemonTest.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ReviewerController : Controller
     {
         private readonly IReviewerRepository _reviewerRepository;

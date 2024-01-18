@@ -13,6 +13,12 @@ namespace PokemonTest.Repository
             _context = context;
         }
 
+        public bool CreateOwner(Owner owner)
+        {
+            _context.Add(owner);
+            return Save();
+        }
+
         public ICollection<Owner> GetAllOwners()
         {
             return _context.Owners.ToList();
@@ -40,6 +46,12 @@ namespace PokemonTest.Repository
         public bool OwnerExists(int id)
         {
            return _context.Owners.Any(o => o.Id == id);
+        }
+
+        public bool Save()
+        {
+           var saved = _context.SaveChanges();
+           return saved >= 0 ? true : false;
         }
     }
 }
