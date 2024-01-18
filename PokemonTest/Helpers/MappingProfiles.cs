@@ -15,8 +15,10 @@ namespace PokemonTest.Helpers
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryDto, Category>();
 
-
+            //TODO use reverse map instead of creating both maps
             CreateMap<Country, CountryDto>();
+            CreateMap<CountryDto, Country>();
+           
             CreateMap<Owner, OwnerDto>();
             CreateMap<Review, ReviewDto>();
             CreateMap<Reviewer, ReviewerDto>();
