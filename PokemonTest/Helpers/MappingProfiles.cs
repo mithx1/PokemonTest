@@ -23,7 +23,10 @@ namespace PokemonTest.Helpers
             CreateMap<Owner, OwnerDto>();
             CreateMap<OwnerDto, Owner>();
 
+            CreateMap<ReviewDto, Review>();
             CreateMap<Review, ReviewDto>();
+
+
             CreateMap<Reviewer, ReviewerDto>();
             
         }
