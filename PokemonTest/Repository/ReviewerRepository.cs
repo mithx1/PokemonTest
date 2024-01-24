@@ -17,6 +17,12 @@ namespace PokemonTest.Repository
             _mapper = mapper;
         }
 
+        public bool CreateReviewer(Reviewer reviewer)
+        {
+            _context.Add(reviewer);
+            return Save();
+        }
+
         public ICollection<Reviewer> GetAllReviewers()
         {
             return _context.Reviewers.ToList();
@@ -35,6 +41,12 @@ namespace PokemonTest.Repository
         public bool ReviewerExists(int id)
         {
             return _context.Reviews.Any(r => r.Id == id);
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved >= 0 ? true : false;
         }
     }
 }

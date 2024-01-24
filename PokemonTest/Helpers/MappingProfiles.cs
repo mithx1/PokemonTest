@@ -28,6 +28,7 @@ namespace PokemonTest.Helpers
 
 
             CreateMap<Reviewer, ReviewerDto>();
+            CreateMap<ReviewerDto, Reviewer>();
             
         }
     }
